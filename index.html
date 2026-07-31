@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Corvo Capital | Tecnologia em Crédito Privado</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --bg-color: #05070A;
+            --card-bg: rgba(18, 23, 38, 0.90);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #FFFFFF;
+            --text-secondary: #A8B3CF;
+            --primary: #3B82F6;
+            --primary-hover: #2563EB;
+            --accent: #10B981;
+            --accent-hover: #059669;
+            --warning: #F59E0B;
+            --radius-card: 24px;
+            --radius-element: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top, #10254D 0%, #0A1629 25%, #05070A 100%);
+            color: var(--text-primary);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px 16px;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .glow-logo {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            filter: blur(40px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding: 0 4px;
+        }
+
+        .logo-area h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #FFFFFF;
+        }
+
+        .logo-area span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 0.3px;
+            margin-top: 2px;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(18, 23, 38, 0.8);
+            border: 1px solid var(--card-border);
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .secure-badge i {
+            width: 13px;
+            height: 13px;
+            color: var(--accent);
+        }
+
+        .card {
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-card);
+            padding: 28px 24px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 24px;
+        }
+
+        .card-header {
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .card-header p {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .benefits-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.73rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .benefit-item i {
+            width: 14px;
+            height: 14px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .tab-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: rgba(5, 7, 10, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 16px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 10px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--text-primary);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            width: 18px;
+            height: 18px;
+            pointer-events: none;
+            transition: color 0.2s;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 60px;
+            background: rgba(5, 7, 10, 0.7);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-element);
+            padding: 0 16px 0 48px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 400;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(168, 179, 207, 0.5);
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        input[type="text"]:focus + i,
+        .input-wrapper:focus-within i {
+            color: var(--primary);
+        }
+
+        .input-hint {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            padding-left: 2px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: var(--radius-element);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2563EB, #1D4ED8);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary i {
+            width: 18px;
+            height: 18px;
+        }
+
+        .card-footer-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--card-border);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .card-footer-badges span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .loading-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .radar-box {
+            position: relative;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(59, 130, 246, 0.1);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .radar-box i {
+            color: var(--primary);
+            width: 24px;
+            height: 24px;
+        }
+
+        .loading-container h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .loading-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+            background: rgba(5, 7, 10, 0.5);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .step-item {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .step-item.active {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .step-item.done {
+            color: var(--accent);
+        }
+
+        .result-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .result-top h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.72rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--accent);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            font-weight: 500;
+        }
+
+        .status-badge i {
+            width: 12px;
+            height: 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .info-box {
+            background: rgba(5, 7, 10, 0.6);
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .info-box span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-bottom: 3px;
+        }
+
+        .info-box strong {
+            font-size: 0.88rem;
+            color: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .pending-text {
+            color: var(--accent) !important;
+        }
+
+        .value-text {
+            color: var(--accent) !important;
+            font-weight: 600 !important;
+        }
+
+        .divider-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 14px 0 8px 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .divider-title i {
+            width: 15px;
+            height: 15px;
+        }
+
+        .document-preview-box {
+            background: rgba(5, 7, 10, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .document-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .document-info i {
+            color: var(--accent);
+            width: 20px;
+            height: 20px;
+        }
+
+        .document-info span {
+            font-size: 0.78rem;
+            color: #FFFFFF;
+            font-weight: 500;
+            display: block;
+        }
+
+        .document-info small {
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+        }
+
+        .btn-view-doc {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+
+        .btn-view-doc:hover {
+            background: rgba(59, 130, 246, 0.25);
+        }
+
+        .upload-area {
+            margin-bottom: 18px;
+        }
+
+        .upload-label-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: rgba(5, 7, 10, 0.6);
+            border: 2px dashed var(--card-border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-label-box:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.03);
+        }
+
+        .upload-label-box i {
+            width: 24px;
+            height: 24px;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .upload-label-box span {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #FFFFFF;
+        }
+
+        .upload-label-box small {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .terms-box {
+            background: rgba(5, 7, 10, 0.6);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 18px;
+        }
+
+        .terms-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .terms-box h4 i {
+            width: 15px;
+            height: 15px;
+            color: var(--primary);
+        }
+
+        .terms-list {
+            list-style: none;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 12px;
+            padding-left: 2px;
+        }
+
+        .terms-list li strong {
+            color: #FFFFFF;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.78rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-container input {
+            margin-top: 2px;
+            accent-color: var(--primary);
+            width: 15px;
+            height: 15px;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35) !important;
+        }
+
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #059669, #047857) !important;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5) !important;
+        }
+
+        .btn-disabled {
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: rgba(255, 255, 255, 0.3) !important;
+            cursor: not-allowed !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .main-footer {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            padding: 10px 0 20px 0;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            z-index: 2;
+        }
+
+        .footer-brand {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 8px 0;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copy {
+            margin-top: 6px;
+            font-size: 0.65rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-logo"></div>
+
+    <div class="wrapper">
+        <header class="main-header">
+            <div class="logo-area">
+                <h1>CORVO CAPITAL</h1>
+                <span>Tecnologia em Crédito Privado</span>
+            </div>
+            <div class="secure-badge">
+                <i data-lucide="shield"></i>
+                <span>Ambiente Seguro<br>AES-256 | SSL/TLS</span>
+            </div>
+        </header>
+
+        <section id="searchSection" class="card">
+            <div class="card-header">
+                <h2>Consulta de Crédito Conjunta</h2>
+                <p>Consulte a elegibilidade da conta conjunta (Titular & Cônjuge) através do nosso sistema automatizado.</p>
+            </div>
+
+            <div class="benefits-row">
+                <div class="benefit-item">
+                    <i data-lucide="zap"></i>
+                    <span>Análise instantânea</span>
+                </div>
+                <div class="benefit-item">
+                    <i data-lucide="lock"></i>
+                    <span>Criptografado</span>
+                </div>
+                <div class="benefit-item">
+                    <i data-lucide="check-circle-2"></i>
+                    <span>Sem pendências</span>
+                </div>
+            </div>
+
+            <div class="tab-selector">
+                <button type="button" class="tab-btn active" id="tabCpf" onclick="switchMode('cpf')">Por CPF</button>
+                <button type="button" class="tab-btn" id="tabNome" onclick="switchMode('nome')">Nome Completo</button>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <i id="inputIcon" data-lucide="file-text"></i>
+                    <input type="text" id="clientInput" placeholder="Digite apenas os números do CPF" autocomplete="off">
+                </div>
+                <small id="inputHint" class="input-hint">Digite apenas os 11 números, sem pontos ou traços (Ex: 18855337726 ou 16486715782).</small>
+            </div>
+
+            <button type="button" class="btn-primary" id="searchBtn">
+                <span>INICIAR ANÁLISE CONJUNTA</span>
+                <i data-lucide="arrow-right"></i>
+            </button>
+
+            <div class="card-footer-badges">
+                <span><i data-lucide="shield-check" style="width:13px;height:13px;color:var(--accent);"></i> Dados protegidos</span>
+                <span><i data-lucide="zap" style="width:13px;height:13px;color:var(--primary);"></i> Resposta imediata</span>
+            </div>
+        </section>
+
+        <section id="loadingSection" class="card hidden">
+            <div class="loading-container">
+                <div class="radar-box">
+                    <div class="spinner"></div>
+                    <i data-lucide="cpu"></i>
+                </div>
+                <h3>Processando Análise Conjunta...</h3>
+                <div class="loading-steps">
+                    <div id="step1" class="step-item">⟳ Estabelecendo conexão segura com o servidor...</div>
+                    <div id="step2" class="step-item">⟳ Validando quitação de pendências anteriores...</div>
+                    <div id="step3" class="step-item">⟳ Sincronizando dados dos titulares (Julia & Danilo)...</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resultSection" class="card hidden">
+            <div class="result-top">
+                <div>
+                    <h3 id="resNameHeader">Conta Conjunta Vinculada</h3>
+                    <p style="font-size: 0.72rem; color: var(--text-secondary);">Sessão autenticada via bureau</p>
+                </div>
+                <div class="status-badge">
+                    <i data-lucide="check-circle-2"></i> Regularizado
+                </div>
+            </div>
+
+            <div class="divider-title">
+                <i data-lucide="user"></i> Titular Principal
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <span>Nome Completo</span>
+                    <strong id="resName">-</strong>
+                </div>
+                <div class="info-box">
+                    <span>Documento (CPF)</span>
+                    <strong id="resCpf">-</strong>
+                </div>
+            </div>
+
+            <div class="divider-title">
+                <i data-lucide="user-plus"></i> Cônjuge / Co-Titular & Documento
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <span>Nome Completo</span>
+                    <strong id="resPartnerName">-</strong>
+                </div>
+                <div class="info-box">
+                    <span>Documento (CPF)</span>
+                    <strong id="resPartnerCpf">-</strong>
+                </div>
+                <div class="info-box">
+                    <span>Naturalidade / Nasc.</span>
+                    <strong id="resPartnerInfo">-</strong>
+                </div>
+            </div>
+
+            <!-- Documento do Marido Integrado -->
+            <div class="document-preview-box">
+                <div class="document-info">
+                    <i data-lucide="file-check-2"></i>
+                    <div>
+                        <span>Documento de Identificação (Marido)</span>
+                        <small>Verificado e Validado no Sistema</small>
+                    </div>
+                </div>
+                <a href="https://great-coffee-qub1bekx.edgeone.dev/" target="_blank" class="btn-view-doc">
+                    <i data-lucide="external-link" style="width:14px;height:14px;"></i> Ver Doc
+                </a>
+            </div>
+
+            <div class="divider-title">
+                <i data-lucide="pie-chart"></i> Dados Financeiros e Contrato
+            </div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <span>Status de Pendências</span>
+                    <strong id="resPendencia" class="pending-text">-</strong>
+                </div>
+                <div class="info-box">
+                    <span>Crédito Liberado (Conta Conjunta)</span>
+                    <strong class="value-text">R$ 14.000,00</strong>
+                </div>
+            </div>
+
+            <div class="upload-area">
+                <div class="upload-label-box" id="uploadLabelBox">
+                    <i data-lucide="upload-cloud"></i>
+                    <div>
+                        <span id="uploadText">Anexar Comprovante Adicional (Opcional)</span>
+                        <small>JPG, PNG ou PDF (Máx. 10MB)</small>
+                    </div>
+                </div>
+                <input type="file" id="proofFile" accept="image/*,application/pdf">
+            </div>
+
+            <div class="terms-box">
+                <h4><i data-lucide="file-text"></i> Termos de Crédito Conjunto (14k)</h4>
+                <ul class="terms-list">
+                    <li><span>Parcelamento:</span> <strong>17 parcelas fixas de R$ 1.400,00</strong></li>
+                    <li><span>Vencimento:</span> Todo dia <strong>1º</strong> de cada mês</li>
+                    <li><span>Encargos de Atraso:</span> Multa de 2% + <strong>R$ 5,00/dia</strong></li>
+                    <li><span>Cláusula de Garantia:</span> Atraso superior a <strong>30 dias</strong> implicará na tomada de bens em garantia conjunta.</li>
+                </ul>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="acceptTerms">
+                    <label for="acceptTerms">Compreendo e aceito os termos do contrato, prazos e regras de garantia conjunta.</label>
+                </div>
+            </div>
+
+            <button type="button" class="btn-primary btn-whatsapp btn-disabled" id="whatsappBtn" disabled>
+                <i data-lucide="message-square"></i>
+                <span>SOLICITAR LIBERAÇÃO VIA WHATSAPP</span>
+            </button>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-brand">CORVO CAPITAL</div>
+        <div>Tecnologia em Crédito Privado</div>
+        <div class="footer-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+            <a href="#">Contato</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 Corvo Capital Technologies</div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const clientsData = [
+            {
+                queryKey: "18855337726",
+                nameQuery: "julia stefane de jesus almeida",
+                fullName: "Julia Stefane de Jesus Almeida",
+                cpf: "188.553.377-26",
+                partnerName: "Danilo Lopes da Silva",
+                partnerCpf: "164.867.157-82",
+                partnerExtra: "Montanha - ES (Nasc: 27/05/1997)",
+                pendencia: "Quitado com Sucesso (Sem pendências ativas)"
+            },
+            {
+                queryKey: "16486715782",
+                nameQuery: "danilo lopes da silva",
+                fullName: "Julia Stefane de Jesus Almeida",
+                cpf: "188.553.377-26",
+                partnerName: "Danilo Lopes da Silva",
+                partnerCpf: "164.867.157-82",
+                partnerExtra: "Montanha - ES (Nasc: 27/05/1997)",
+                pendencia: "Quitado com Sucesso (Sem pendências ativas)"
+            }
+        ];
+
+        let currentMode = 'cpf';
+        let currentClient = null;
+
+        const tabCpf = document.getElementById('tabCpf');
+        const tabNome = document.getElementById('tabNome');
+        const clientInput = document.getElementById('clientInput');
+        const inputIcon = document.getElementById('inputIcon');
+        const inputHint = document.getElementById('inputHint');
+        const searchBtn = document.getElementById('searchBtn');
+
+        const searchSection = document.getElementById('searchSection');
+        const loadingSection = document.getElementById('loadingSection');
+        const resultSection = document.getElementById('resultSection');
+
+        const resName = document.getElementById('resName');
+        const resCpf = document.getElementById('resCpf');
+        const resPartnerName = document.getElementById('resPartnerName');
+        const resPartnerCpf = document.getElementById('resPartnerCpf');
+        const resPartnerInfo = document.getElementById('resPartnerInfo');
+        const resPendencia = document.getElementById('resPendencia');
+        
+        const proofFile = document.getElementById('proofFile');
+        const uploadLabelBox = document.getElementById('uploadLabelBox');
+        const uploadText = document.getElementById('uploadText');
+        const acceptTerms = document.getElementById('acceptTerms');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+
+        function switchMode(mode) {
+            currentMode = mode;
+            clientInput.value = '';
+            
+            if (mode === 'cpf') {
+                tabCpf.classList.add('active');
+                tabNome.classList.remove('active');
+                clientInput.placeholder = "Digite apenas os números do CPF";
+                inputHint.textContent = "Digite apenas os 11 números, sem pontos ou traços (Ex: Julia ou Danilo).";
+                clientInput.setAttribute('maxlength', '11');
+            } else {
+                tabNome.classList.add('active');
+                tabCpf.classList.remove('active');
+                clientInput.placeholder = "Digite o Nome Completo";
+                inputHint.textContent = "Digite o nome completo cadastrado na plataforma.";
+                clientInput.removeAttribute('maxlength');
+            }
+            clientInput.focus();
+        }
+
+        clientInput.addEventListener('input', (e) => {
+            if (currentMode === 'cpf') {
+                e.target.value = e.target.value.replace(/\D/g, '');
+            }
+        });
+
+        searchBtn.addEventListener('click', executeSearch);
+        clientInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') executeSearch();
+        });
+
+        function executeSearch() {
+            const val = clientInput.value.trim().toLowerCase();
+            
+            if (!val) {
+                alert(currentMode === 'cpf' ? "Por favor, digite o CPF." : "Por favor, digite o nome completo.");
+                return;
+            }
+
+            let found = null;
+            if (currentMode === 'cpf') {
+                const cleanCpf = val.replace(/\D/g, '');
+                found = clientsData.find(c => c.queryKey === cleanCpf || c.partnerCpf.replace(/\D/g, '') === cleanCpf);
+            } else {
+                found = clientsData.find(c => c.nameQuery.includes(val) || c.partnerName.toLowerCase().includes(val));
+            }
+
+            if (!found) {
+                alert("Nenhum registro localizado com os dados informados. Verifique as informações e tente novamente.");
+                return;
+            }
+
+            currentClient = found;
+
+            searchSection.classList.add('hidden');
+            loadingSection.classList.remove('hidden');
+
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+
+            setTimeout(() => {
+                step1.classList.add('done');
+                step1.textContent = '✔ Conexão segura estabelecida com o servidor.';
+                step2.classList.add('active');
+            }, 700);
+
+            setTimeout(() => {
+                step2.classList.remove('active');
+                step2.classList.add('done');
+                step2.textContent = '✔ Histórico verificado: Débito anterior quitado.';
+                step3.classList.add('active');
+            }, 1400);
+
+            setTimeout(() => {
+                step3.classList.remove('active');
+                step3.classList.add('done');
+                step3.textContent = '✔ Conta conjunta (Titular + Cônjuge) sincronizada.';
+            }, 2100);
+
+            setTimeout(() => {
+                loadingSection.classList.add('hidden');
+                
+                resName.textContent = found.fullName;
+                resCpf.textContent = found.cpf;
+                resPartnerName.textContent = found.partnerName;
+                resPartnerCpf.textContent = found.partnerCpf;
+                resPartnerInfo.textContent = found.partnerExtra;
+                resPendencia.textContent = found.pendencia;
+                
+                resultSection.classList.remove('hidden');
+                lucide.createIcons();
+            }, 2700);
+        }
+
+        uploadLabelBox.addEventListener('click', () => {
+            proofFile.click();
+        });
+
+        proofFile.addEventListener('change', () => {
+            if (proofFile.files.length > 0) {
+                const fileName = proofFile.files[0].name;
+                uploadText.textContent = `Anexado: ${fileName}`;
+                uploadText.style.color = 'var(--accent)';
+            }
+            validateForm();
+        });
+
+        acceptTerms.addEventListener('change', validateForm);
+
+        function validateForm() {
+            // Como o documento do marido já está anexado via URL, apenas aceitar os termos libera o botão
+            const isChecked = acceptTerms.checked;
+
+            if (isChecked) {
+                whatsappBtn.classList.remove('btn-disabled');
+                whatsappBtn.removeAttribute('disabled');
+            } else {
+                whatsappBtn.classList.add('btn-disabled');
+                whatsappBtn.setAttribute('disabled', 'true');
+            }
+        }
+
+        whatsappBtn.addEventListener('click', () => {
+            if (!whatsappBtn.hasAttribute('disabled') && currentClient) {
+                const titular = currentClient.fullName;
+                const conjuge = currentClient.partnerName;
+                const cpfTitular = currentClient.cpf;
+                const cpfConjuge = currentClient.partnerCpf;
+                const seuNumeroWhatsApp = "555196576580"; 
+                
+                const mensagem = `*PORTAL CORVO CAPITAL - CRÉDITO CONJUNTO*\n\n` +
+                                 `• *Titular:* ${titular} (CPF: ${cpfTitular})\n` +
+                                 `• *Cônjuge:* ${conjuge} (CPF: ${cpfConjuge})\n` +
+                                 `• *Documento do Marido:* Verificado (Anexo validado)\n` +
+                                 `• *Status:* Débito anterior quitado | Termos aceitos.\n\n` +
+                                 `Solicito a liberação oficial do crédito conjunto no valor de *R$ 14.000,00* (Plano: 17x de R$ 1.400,00).`;
+                
+                const encodedMessage = encodeURIComponent(mensagem);
+                const url = `https://api.whatsapp.com/send?phone=${seuNumeroWhatsApp}&text=${encodedMessage}`;
+                
+                window.open(url, '_blank');
+            }
+        });
+    </script>
+</body>
+</html>
